@@ -60,7 +60,7 @@ conda_args <- reticulate:::conda_args
 spacy_install <- function(conda = "auto",
                           version = "latest",
                           lang_models = "en_core_web_sm",
-                          python_version = "3.6",
+                          python_version = "3.8",
                           envname = "spacy_condaenv",
                           pip = FALSE,
                           python_path = NULL,
