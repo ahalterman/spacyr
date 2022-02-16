@@ -124,7 +124,7 @@ spacy_install <- function(conda = "auto",
         # determine whether we have system python
         python_versions <- reticulate::py_versions_windows()
         python_versions <- python_versions[python_versions$type == "PythonCore", ]
-        python_versions <- python_versions[python_versions$version %in% c("3.5", "3.6"), ]
+        python_versions <- python_versions[python_versions$version %in% c("3.8"), ]
         python_versions <- python_versions[python_versions$arch == "x64", ]
         have_system <- nrow(python_versions) > 0
         if (have_system)
@@ -161,7 +161,7 @@ spacy_install <- function(conda = "auto",
 #' @export
 spacy_install_virtualenv <- function(version = "latest",
                                      lang_models = "en_core_web_sm",
-                                     python_version = "3.6",
+                                     python_version = "3.8",
                                      python_path = NULL,
                                      prompt = TRUE) {
     # verify os
@@ -266,7 +266,7 @@ process_spacy_installation_conda <- function(conda, version, lang_models, python
         cat("A new conda environment", paste0('"', envname, '"'), "will be created and \nspaCy and language model(s):",
             paste(lang_models, collapse = ", "), "will be installed.  ")
         cat("Creating", envname, "conda environment for spaCy installation...\n")
-        python_packages <- ifelse(is.null(python_version), "python=3.6",
+        python_packages <- ifelse(is.null(python_version), "python=3.8",
                                   sprintf("python=%s", python_version))
         python <- reticulate::conda_create(envname, packages = python_packages, conda = conda)
     }
@@ -550,7 +550,7 @@ spacy_upgrade  <- function(conda = "auto",
                                              envname = envname,
                                              version = latest_spacy,
                                              lang_models = lang_models,
-                                             python_version = "3.6",
+                                             python_version = "3.8",
                                              prompt = FALSE)
             message("\nSuccessfully upgraded\n",
                     sprintf("Condaenv: %s; Langage model(s): ", envname), lang_models, "\n",
@@ -578,7 +578,7 @@ spacy_upgrade  <- function(conda = "auto",
                                                  envname = envname,
                                                  version = "latest_v1",
                                                  lang_models = lang_models,
-                                                 python_version = "3.6",
+                                                 python_version = "3.8",
                                                  prompt = FALSE,
                                                  pip = pip)
             }
@@ -599,7 +599,7 @@ spacy_upgrade  <- function(conda = "auto",
                                              envname = envname,
                                              version = latest_spacy,
                                              lang_models = lang_models,
-                                             python_version = "3.6",
+                                             python_version = "3.8",
                                              prompt = FALSE,
                                              pip = pip)
             message("\nSuccessfully upgraded\n",
